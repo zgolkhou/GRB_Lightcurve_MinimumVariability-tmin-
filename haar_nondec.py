@@ -1,4 +1,4 @@
-from numpy import log,hstack,arange,round,unique,where,zeros,sqrt,cumsum,size,asarray,loadtxt,concatenate
+from numpy import log,hstack,arange,round,unique,where,zeros,sqrt,cumsum,size,asarray,loadtxt,concatenate,size
 import haar_denoise
 
 def haar_nondec(file_input,nbins,dta,dta1,over_samp=16.,nrepl=1.,bin_fac=2.):

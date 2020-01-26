@@ -1,26 +1,6 @@
 #! /usr/bin/python
 
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Aug. 27 00:48:00 2012
 
-@author: Zach
-"""
-#import sys
-#sys.modules[__name__].__dict__.clear()
-#import Image
-# import numpy as np
-from numpy import *
-#from numpy import log,loadtxt,arange,asarray,unique,concatenate,zeros,sqrt,ceil
-import haar_nondec
-import rate_rebin
-import do_rebin
-import haar_denoise            # Calling the haar_denoising modules
-import matplotlib.pyplot as plt
-import mu0_minimize_CHI2_fmin
-# import scipy as sp
-# import math
-#file_input = "00104298_bat_fine_wlc.txt"
 
 def haar2_power_mod2a_Zach_denoising(file_input): 
 

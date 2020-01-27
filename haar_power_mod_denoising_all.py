@@ -340,6 +340,5 @@ def haar2_power_mod2a_Zach_denoising(file_input):
     text_file4.close()
     text_file5.close()
     text_file6.close()
-        #print 't_min = ',t_min
 
     return

@@ -276,3 +276,33 @@ else:
 (p2, r2, t2, sp2,se2) = KM(km_data_2)
 (failures_2,p_2,see_2) = KM2(km_data_2)
 
+if 1:
+    #fig = plt.figure(1,(4,5))  #(10,8)
+    ax = fig.add_subplot(122)
+    ###plt.gca().invert_xaxis()
+    p1, = ax.step((10**(sdd-failures)),p*size(p), where='pre',linewidth=1.5,color='green',alpha=0.4,label='gr'); plt.xscale('log')
+    #plt.step(hstack(((10**failures),10**failures[-1])),hstack((p,0)), where='pre'); plt.xscale('log')
+    #plt.plot(failures,p,color='g',linestyle='--', drawstyle='steps',ms=5)
+    ##p2, = ax.plot((10**(sdd-failures)),(p+see)*size(p),color='w', linestyle='--', drawstyle='steps',alpha=0.4,label='re'); plt.xscale('log')
+    ##ax.plot((10**(sdd-failures)),(p-see)*size(p),color='w', linestyle='--', drawstyle='steps',alpha=0.4); plt.xscale('log')
+    p3, = ax.plot([2,2],[1,1],'b-',linewidth=3,label='dummy') # DUMMY LINE
+    p4, = ax.plot([2,2],[1,1],'w-')    # DUMMY LINE
+    p5, = ax.plot([2,2],[1,1],'r-',linewidth=1.5,alpha=0.4)    # DUMMY LINE
+    p6, = ax.plot([2,2],[1,1],'k-',linewidth=1.5,alpha=0.4)    # DUMMY LINE
+    #
+    ax.set_xlim((0.01,max(10**(sdd-failures))))
+    ax.set_ylim((0,size(p)+1))    
+    #ax.set_title('Kaplan-Meier survival curve')
+    ax.set_xlabel(r'$\Delta t_{min}/(1+z)\ (sec)$',fontdict={'fontsize':18})
+    #ax.set_ylabel(r'$N(>t_{min})$',fontdict={'fontsize':20})
+    #ax.grid(True, which="both")
+    left, width = .02, .5
+    bottom, height = .25, .5
+    right = left + width
+    top = bottom + height
+    ax.text(left, 0.5*(bottom+top), r'$N(>\frac{\Delta t_{min}}{1+z})$',fontdict={'fontsize':18},
+        horizontalalignment='left',
+        verticalalignment='center',
+        rotation='vertical',
+        transform=ax.transAxes)
+    

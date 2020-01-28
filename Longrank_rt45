@@ -1,0 +1,76 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Dec  5 23:07:52 2013
+
+@author: V. Zach
+"""
+from numpy import *
+from matplotlib import pyplot as plt
+from scipy import stats
+from KaplanMeier import KaplanMeier as KM
+from KaplanMeier_2 import KaplanMeier_2 as KM2
+
+'''Logrank hypothesis test, comparing the survival times for two different datasets'''
+
+input_file = "/Users/Vahid/Desktop/DATA_Christmas2013/merge_tmin_temp_spec_11_18_2013_rt45.txt"
+#input_file = "/Users/Vahid/Desktop/merge_tmin_temp_spec_12_05_2013_z.txt"
+
+DATA = loadtxt(input_file, dtype='float64')
+
+save_plt = 0
+save_plt_2 = 0
+thresh = 0.1
+#
+
+grb_all = DATA[:,0]; tmin_all = DATA[:,1] # bin=2, over_sample = 16, chi2_diff (v2)
+lev_all = DATA[:,2]; tw_all = DATA[:,3]
+tt_all = DATA[:,4]; chi2_nu_all = DATA[:,5] 
+dof_all = DATA[:,6]; pval_all = DATA[:,7] 
+chi2_diffT_all = DATA[:,8]; tmax_all = DATA[:,9]; Lp_all = DATA[:,10]
+
+grb_all2 = DATA[:,11]; t90_all = DATA[:,12]; t90_dev_all = DATA[:,13]
+
+grb_all3 = DATA[:,14]; snr_all = DATA[:,15]; z_all = DATA[:,16]
+Ep_all = DATA[:,17]; Epm_all = DATA[:,18]; Epp_all = DATA[:,19]
+Sbol_all = DATA[:,20]; Sbolm_all = DATA[:,21]; Sbolp_all = DATA[:,22]
+
+grb_all4 = DATA[:,23]; rt45_all = DATA[:,24]; rt45_all_dev = DATA[:,25]
+
+pck = where((pval_all > thresh)*(lev_all==1))[0]  #*(t90_all>=3)
+med_1 = median(tmin_all[pck]) 
+
+#pck = where((pval_all > thresh)*(lev_all==1)*(z_all !=0)*(t90_all>=3))[0]
+#med_2 = median(tmin_all[pck]/(z_all[pck]+1.))
+#----------------------------------------------------
+pck2 = where((pval_all <= thresh)*(lev_all==1))[0]
+
+len_mat = size(where(lev_all!=2))
+km_data = zeros((len_mat,2))
+
+km_data[:size(pck),0] = (tmin_all[pck]) 
+#med_1 = median(tmin_all[pck]) 
+km_data[size(pck):len_mat,0] = (tmin_all[pck2])
+km_data[size(pck):len_mat,1] = ones(size(pck2))
+
+km_data[:,0] = log10(km_data[:,0])
+sdd = km_data[:,0].max()
+km_data[:,0] = km_data[:,0].max() - km_data[:,0]
+km_data = km_data[km_data[:,0].argsort()]
+
+times_1 = km_data[:,0]
+censored_1 = km_data[:,1]
+atRisk_1 = arange(len(times_1),0,-1)
+failures_1 = times_1[censored_1==0]
+#---------------------------------------------------
+#len_mat_2 = size(pck)
+km_data_2 = zeros((size(pck),2))
+
+km_data_2[:size(pck),0] = (tmin_all[pck])
+#km_data[size(pck):len_mat,0] = (tmin_all[pck2])
+#km_data[size(pck):len_mat,1] = ones(size(pck2))
+
+km_data_2[:,0] = log10(km_data_2[:,0])
+sdd_2 = km_data_2[:,0].max()
+km_data_2[:,0] = km_data_2[:,0].max() - km_data_2[:,0]
+km_data_2 = km_data_2[km_data_2[:,0].argsort()]
+

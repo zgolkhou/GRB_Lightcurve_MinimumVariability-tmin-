@@ -322,3 +322,21 @@ if 1:
     ax2.plot([0.2153,0.2153],[0,1],'k:',alpha=0.5)
     ax2.plot([0.19167,0.19167],[0,1],'k:',alpha=0.5)
 
+    #ax2 = ax.twinx()
+    ax2.set_xlim((0.007,max(10**(sdd-failures))))
+    ax2.set_ylabel('Fraction',size=16,color='black')
+    
+    lg = ax.legend((p3,p4,p1,p4,p5,p6), ('Fraction of all GRBs w/',' measured $\Delta t_{min}$ ','All, including upper limits',' via survival analysis','$T_{90}$ as upper-limit','$T_{r45}$ as upper-limit'),loc='upper left',handlelength=0.8,handletextpad=0.2)
+    ###lg2 = plt.legend(('dfdf',''),loc='upper left')
+    lg.draw_frame(False)
+    ###lg2.draw_frame(False)
+    ax.tick_params(axis='both', which='major', labelsize=12)
+    ax2.tick_params(axis='both', which='major', labelsize=12)    
+    #ax2.grid(True, which="both")
+    fig.tight_layout()
+    if save_plt:
+        #plt.savefig('/Users/Vahid/Desktop/KM2.png',format='png')
+        plt.savefig('/Users/Vahid/Desktop/b6.pdf',format='pdf', bbox_inches='tight', pad_inches = 0.1)
+    
+    ##################################################
+    plt.show()

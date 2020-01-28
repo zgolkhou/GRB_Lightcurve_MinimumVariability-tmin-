@@ -222,3 +222,57 @@ km_data_2[:,0] = log10(km_data_2[:,0])
 sdd_2 = km_data_2[:,0].max()
 km_data_2[:,0] = km_data_2[:,0].max() - km_data_2[:,0]
 km_data_2 = km_data_2[km_data_2[:,0].argsort()]
+
+
+times_2 = km_data_2[:,0]
+censored_2 = km_data_2[:,1]
+atRisk_2 = arange(len(times_2),0,-1)
+failures_2 = times_2[censored_2==0]
+#---------------------------------------------------
+failures = unique(hstack((times_1[censored_1==0], times_2[censored_2==0])))
+num_failures = len(failures)
+r1 = zeros(num_failures)
+r2 = zeros(num_failures)
+r  = zeros(num_failures)
+f1 = zeros(num_failures)
+f2 = zeros(num_failures)
+f  = zeros(num_failures)
+e1 = zeros(num_failures)
+f1me1 = zeros(num_failures)
+v = zeros(num_failures)
+
+for ii in range(num_failures):
+    r1[ii] = sum(times_1 >= failures[ii])
+    r2[ii] = sum(times_2 >= failures[ii])
+    r[ii] = r1[ii] + r2[ii]
+    
+    f1[ii] = sum(failures_1==failures[ii])
+    f2[ii] = sum(failures_2==failures[ii])
+    f[ii] = f1[ii] + f2[ii]
+    
+    e1[ii] = r1[ii]*f[ii]/r[ii]
+    f1me1[ii] = f1[ii] - e1[ii]
+    v[ii] = r1[ii]*r2[ii]*f[ii]*(r[ii]-f[ii]) / ( r[ii]**2 *(r[ii]-1) )
+
+    O1 = sum(f1)
+    O2 = sum(f2)
+    E1 = sum(e1)
+    O1mE1 = sum(f1me1)
+    V = sum(v[:-1])  # <---- delete nan
+    
+chi2 = (O1-E1)**2/V
+p = stats.chi2.sf(chi2, 1)
+
+print('X^2 = {0}'.format(chi2))
+if p < 0.05:
+    print('p={0}, the two survival curves are signifcantly different.'.format(p))
+else:
+    print('p={0}, the two survival curves are not signifcantly different.'.format(p))
+    
+    
+(p1, r1, t1, sp1,se1) = KM(km_data)
+(failures,p,see) = KM2(km_data)
+#
+(p2, r2, t2, sp2,se2) = KM(km_data_2)
+(failures_2,p_2,see_2) = KM2(km_data_2)
+

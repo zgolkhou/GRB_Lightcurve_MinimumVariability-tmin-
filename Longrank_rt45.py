@@ -67,7 +67,6 @@ km_data_2 = zeros((size(pck),2))
 
 km_data_2[:size(pck),0] = (tmin_all[pck])
 #km_data[size(pck):len_mat,0] = (tmin_all[pck2])
-#km_data[size(pck):len_mat,1] = ones(size(pck2))
 
 km_data_2[:,0] = log10(km_data_2[:,0])
 sdd_2 = km_data_2[:,0].max()

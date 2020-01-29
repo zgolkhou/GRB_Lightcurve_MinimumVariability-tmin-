@@ -15,3 +15,14 @@ def kaplan_meier(t,ttype,mean_only=False):
     x = ttype[ii]/nn
     frac = (1-x).cumprod()
 
+    # Greenwood's formula, V(S) = S^2 * Sum ti<=t di/ni/(ni-di)
+    dfrac = frac * sqrt( (x/(1-x)/nn).cumsum() )
+    if (ttype.sum()==n or x[-1]==1): dfrac[-1]=0
+
+    if (mean_only):
+
+        tt1 = ttype[ii]
+        ii1 = ii[tt1]
+        dt = t[ii1[1:]] - t[ii1[:-1]]
+        dt0 = t[ii[-1]] - t[ii1[-1]]
+

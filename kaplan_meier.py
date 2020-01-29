@@ -26,3 +26,12 @@ def kaplan_meier(t,ttype,mean_only=False):
         dt = t[ii1[1:]] - t[ii1[:-1]]
         dt0 = t[ii[-1]] - t[ii1[-1]]
 
+        mn = ( dt * frac[tt1][:-1] ).sum() + dt0*frac[tt1][-1]
+        fracl = frac-dfrac
+        mnl = ( dt * fracl[tt1][:-1] ).sum() + dt0*fracl[tt1][-1]
+        fracu = frac+dfrac
+        mnu = ( dt * fracu[tt1][:-1] ).sum() + dt0*fracu[tt1][-1]
+
+        t0 = t[ii1[0]]
+        return mn+t0,mnl+t0,mnu+t0
+

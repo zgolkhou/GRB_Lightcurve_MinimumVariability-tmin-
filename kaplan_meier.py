@@ -35,3 +35,6 @@ def kaplan_meier(t,ttype,mean_only=False):
         t0 = t[ii1[0]]
         return mn+t0,mnl+t0,mnu+t0
 
+    else:
+
+        return t[ii], frac, dfrac

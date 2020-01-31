@@ -276,7 +276,6 @@ else:
 (failures_2,p_2,see_2) = KM2(km_data_2)
 
 if 1:
-    #fig = plt.figure(1,(4,5))  #(10,8)
     ax = fig.add_subplot(122)
     ###plt.gca().invert_xaxis()
     p1, = ax.step((10**(sdd-failures)),p*size(p), where='pre',linewidth=1.5,color='green',alpha=0.4,label='gr'); plt.xscale('log')

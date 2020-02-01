@@ -157,7 +157,6 @@ if 1:
         rotation='vertical',
         transform=ax.transAxes)
        
-    #plt.subplot(121)
     #n, bins, patches = plt.hist(log10(tmin),bins=15,normed=1,histtype='step', lw=2, color='blue',cumulative=True)
     #n, bins, patches = plt.hist(tmin,bins=logspace(log10(tmin.min()),log10(tmin.max()),20),normed=1,histtype='step', lw=2, color='black',cumulative=True)
     ax2 = ax.twinx()

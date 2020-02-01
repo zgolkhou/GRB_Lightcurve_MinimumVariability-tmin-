@@ -157,7 +157,6 @@ if 1:
         rotation='vertical',
         transform=ax.transAxes)
        
-    #n, bins, patches = plt.hist(tmin,bins=logspace(log10(tmin.min()),log10(tmin.max()),20),normed=1,histtype='step', lw=2, color='black',cumulative=True)
     ax2 = ax.twinx()
     ax2.step((10**(sdd_2-failures_2)),p_2, where='pre',linewidth=3,color='blue'); plt.xscale('log')    
     #plt.plot([tmin.min(),tmin.max()],[0,0],'w-',linewidth=3)

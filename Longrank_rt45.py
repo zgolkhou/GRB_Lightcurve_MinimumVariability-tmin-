@@ -304,7 +304,6 @@ if 1:
         rotation='vertical',
         transform=ax.transAxes)
     
-    # Addition of Cumulative Plot to KM
     #3tmin = tmin_all[pck]
     #plt.figure(1,(14,8))
     #plt.subplot(121)

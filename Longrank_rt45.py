@@ -157,7 +157,6 @@ if 1:
         rotation='vertical',
         transform=ax.transAxes)
        
-    #3tmin = tmin_all[pck]
     #plt.figure(1,(14,8))
     #plt.subplot(121)
     #n, bins, patches = plt.hist(log10(tmin),bins=15,normed=1,histtype='step', lw=2, color='blue',cumulative=True)

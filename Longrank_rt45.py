@@ -131,7 +131,6 @@ if 1:
     subplots_adjust(wspace=0.28) # 0.25
     ###plt.gca().invert_xaxis()
     p1, = ax.step((10**(sdd-failures)),p*size(p), where='pre',linewidth=1.5,color='green',alpha=0.4,label='gr'); plt.xscale('log')
-    #plt.step(hstack(((10**failures),10**failures[-1])),hstack((p,0)), where='pre'); plt.xscale('log')
     #plt.plot(failures,p,color='g',linestyle='--', drawstyle='steps',ms=5)
     ##p2, = ax.plot((10**(sdd-failures)),(p+see)*size(p),color='w', linestyle='--', drawstyle='steps',alpha=0.4,label='re'); plt.xscale('log')
     ##ax.plot((10**(sdd-failures)),(p-see)*size(p),color='w', linestyle='--', drawstyle='steps',alpha=0.4); plt.xscale('log')

@@ -12,6 +12,7 @@ from KaplanMeier_2 import KaplanMeier_2 as KM2
 
 '''Logrank hypothesis test, comparing the survival times for two different datasets'''
 
+# the following file is just an example.
 input_file = "/Users/Vahid/Desktop/DATA_Christmas2013/merge_tmin_temp_spec_11_18_2013_rt45.txt"
 
 DATA = loadtxt(input_file, dtype='float64')

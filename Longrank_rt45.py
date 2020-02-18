@@ -128,7 +128,6 @@ if 1:
     subplots_adjust(wspace=0.28) # 0.25
     ###plt.gca().invert_xaxis()
     p1, = ax.step((10**(sdd-failures)),p*size(p), where='pre',linewidth=1.5,color='green',alpha=0.4,label='gr'); plt.xscale('log')
-    ##ax.plot((10**(sdd-failures)),(p-see)*size(p),color='w', linestyle='--', drawstyle='steps',alpha=0.4); plt.xscale('log')
     p3, = ax.plot([2,2],[1,1],'b-',linewidth=3,label='dummy') # DUMMY LINE
     p4, = ax.plot([2,2],[1,1],'w-')    # DUMMY LINE
     p5, = ax.plot([2,2],[1,1],'r-',linewidth=1.5,alpha=0.4)  # DUMMY LINE

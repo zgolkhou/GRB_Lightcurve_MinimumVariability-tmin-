@@ -39,7 +39,6 @@ grb_all4 = DATA[:,23]; rt45_all = DATA[:,24]; rt45_all_dev = DATA[:,25]
 pck = where((pval_all > thresh)*(lev_all==1))[0]  #*(t90_all>=3)
 med_1 = median(tmin_all[pck]) 
 
-#pck = where((pval_all > thresh)*(lev_all==1)*(z_all !=0)*(t90_all>=3))[0]
 #med_2 = median(tmin_all[pck]/(z_all[pck]+1.))
 #----------------------------------------------------
 pck2 = where((pval_all <= thresh)*(lev_all==1))[0]

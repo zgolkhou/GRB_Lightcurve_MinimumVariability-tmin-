@@ -64,7 +64,6 @@ failures_1 = times_1[censored_1==0]
 km_data_2 = zeros((size(pck),2))
 
 km_data_2[:size(pck),0] = (tmin_all[pck])
-#km_data[size(pck):len_mat,0] = (tmin_all[pck2])
 
 km_data_2[:,0] = log10(km_data_2[:,0])
 sdd_2 = km_data_2[:,0].max()

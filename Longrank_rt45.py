@@ -22,7 +22,7 @@ save_plt_2 = 0
 thresh = 0.1
 #
 
-grb_all = DATA[:,0]; tmin_all = DATA[:,1] # bin=2, over_sample = 16, chi2_diff (v2)
+grb_all = DATA[:,0]; tmin_all = DATA[:,1] 
 lev_all = DATA[:,2]; tw_all = DATA[:,3]
 tt_all = DATA[:,4]; chi2_nu_all = DATA[:,5] 
 dof_all = DATA[:,6]; pval_all = DATA[:,7] 
